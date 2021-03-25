@@ -8,9 +8,7 @@
 
 </head>
 <body>
-<audio id="loading" autoplay loop>
-	<source src="music/loading.mp3" type="audio/mp3">
-</audio>
+    <audio id="loading" src="music/music.mp3" autoplay="true" hidden="true" loop="true"></audio>
 <div id="app">
 	<div id="wrapper">
 		<h1 class="glitch" data-text="
@@ -68,7 +66,7 @@ window.addEventListener('message', function(e)
 <script>
     var play = false;
             var vid = document.getElementById("loading");
-            vid.volume = 0.03;
+            vid.volume = 0.1;
             window.addEventListener('keyup', function(e)
             {
                 if (e.which == 69){
@@ -77,28 +75,25 @@ window.addEventListener('message', function(e)
                     vid.volume = Math.max(vid.volume - 0.1,0);
                 };
             });
-  </script>
-          <script>
-
-        var play = false;
-        var myAudio = document.getElementById("loading");
     
-        function onKeyDown(event) {
-                switch (event.keyCode) {
-                    case 32: //SpaceBar                    
-                        if (play) {
-                            myAudio.pause();
-                            play = false;
-                        } else {
-                            myAudio.play();
-                            play = true;
-                        }
-                        break;
-                }
-          return false;
+            var audio = document.querySelector('audio');
+    
+            if (audio) {
+    
+            window.addEventListener('keydown', function (event) {
+    
+            var key = event.which || event.keyCode;
+    
+            if (key === 32) { // spacebar
+    
+            event.preventDefault();
+    
+            audio.paused ? audio.play() : audio.pause();
+          
         }
     
-        window.addEventListener("keydown", onKeyDown, false);
-        </script>
+      });
+    }
+    </script>
 </body>
 </html>
